@@ -60,7 +60,7 @@ gg_line_CatYeaNum <- function(data, dic = NULL, ...) {
   var_cat <- dic |> filter(hdtype %in% "Cat") %>% .$id
   var_yea <- dic |> filter(hdtype %in% "Yea") %>% .$id
   var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
-  vars <- c( var_yea[1], var_cat[1], var_num[1])
+  vars <- c(  var_cat[1], var_yea[1],, var_num[1])
   gg_line(data = data, dic = dic, vars = vars, color_by = var_cat[1], ...)
 }
 
