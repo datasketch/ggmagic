@@ -21,3 +21,22 @@ gg_scatter <- function(data, dic = NULL, vars = NULL, ...) {
     gg_theme(dsopts_merge(..., categories = "theme"))
   gg
 }
+
+#' @export
+gg_scatter_NumNum <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
+  vars <- c(var_num[1], var_num[2])
+  gg_scatter(data = data, dic = dic, vars = vars, ...)
+}
+
+#' @export
+gg_scatter_CatNumNum <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  var_cat <- dic |> filter(hdtype %in% "Cat") %>% .$id
+  var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
+  vars <- c(var_cat[1], var_num[1], var_num[2])
+  gg_scatter(data = data, dic = dic, vars = vars, color_by = var_cat[1], ...)
+}

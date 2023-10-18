@@ -17,6 +17,8 @@ Depends:
     R (>= 3.0.0),
     dplyr,
     ggplot2,
+    hdtable,
+    dstools,
     showtext,
     ggtext
 Imports:
