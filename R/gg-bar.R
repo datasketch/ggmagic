@@ -3,8 +3,9 @@
 gg_bar <- function(data, dic = NULL, vars = NULL, ...) {
   opts <- dsopts::dsopts_merge(...)
   bar_opts <-  dsopts_merge(..., categories = "bar")
-  data_opts <- list(agg = opts$agg)#dsopts_merge(opts, categories = "dataprep"
-  color_opts <- dsopts_merge(..., categories = "colorprep")
+  data_opts <- list(agg = opts$agg)#
+  #data_opts <- dsopts_merge(..., categories = "dataprep")
+  color_opts <- dsopts_merge(..., categories = "color")
   color_opts$bar_graph_type <- bar_opts$bar_graph_type
   data_prep <- gg_data(data, dic, vars = vars, opts = data_opts)
   hdtype <-  data_prep$hdtype
