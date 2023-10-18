@@ -6,5 +6,7 @@ test_that("Lines plot", {
   data <- data |> filter(team %in% c("IND", "CLE"))
   gg_line(data = data, vars = c( "date", "total", "team"), color_by = "team")
 
-
+  data <- lubridate::lakers
+  data$date <- lubridate::ymd(data$date)
+  gg_line_Dat(data)
 })

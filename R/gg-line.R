@@ -7,7 +7,7 @@ gg_line <- function(data, dic = NULL, vars = NULL, ...) {
   color_opts <- dsopts_merge(..., categories = "colorprep")
   hdtype <-  data_prep$hdtype
   vars <- data_prep$vars
-  data <- gg_data_color(data = data, opts = color_opts, viz = "line")
+  data <- gg_data_color(data = data_prep$data, opts = color_opts, viz = "line")
 
   opts_line <- NULL
 
@@ -21,3 +21,48 @@ gg_line <- function(data, dic = NULL, vars = NULL, ...) {
     gg_theme(dsopts_merge(..., categories = "theme"))
   gg
 }
+
+
+#' @export
+gg_line_Dat <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  vars <- dic |> filter(hdtype %in% "Dat") %>% .$id
+  vars <- vars[1]
+  gg_line(data = data, dic = dic, vars = vars, agg = "count", ...)
+}
+
+#' @export
+gg_line_DatNum <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  var_dat <- dic |> filter(hdtype %in% "Dat") %>% .$id
+  var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
+  vars <- c(var_dat[1], var_num[1])
+  gg_line(data = data, dic = dic, vars = vars, ...)
+}
+
+#' @export
+gg_line_CatDatNum <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  var_dat <- dic |> filter(hdtype %in% "Dat") %>% .$id
+  var_cat <- dic |> filter(hdtype %in% "Cat") %>% .$id
+  var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
+  vars <- c(var_cat, var_dat, var_num[1])
+  gg_line(data = data, dic = dic, vars = vars, color_by = var_cat, ...)
+}
+
+#' @export
+gg_line_CatYeaNum <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  var_cat <- dic |> filter(hdtype %in% "Cat") %>% .$id
+  var_yea <- dic |> filter(hdtype %in% "Yea") %>% .$id
+  var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
+  vars <- c( var_yea[1], var_cat[1], var_num[1])
+  gg_line(data = data, dic = dic, vars = vars, color_by = var_cat[1], ...)
+}
+
+
+
