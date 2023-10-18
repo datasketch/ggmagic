@@ -1,7 +1,7 @@
 
 #' @export
 gg_bar <- function(data, dic = NULL, vars = NULL, ...) {
-  opts <- dsopts::dsopts_merge(...)
+  opts <- dsopts_merge(...)
   bar_opts <-  dsopts_merge(..., categories = "bar")
   data_opts <- list(agg = opts$agg)#
   #data_opts <- dsopts_merge(..., categories = "dataprep")
