@@ -6,20 +6,27 @@ Authors@R: c(
            family = "Marin Diaz",
            role = c("aut", "cre"),
            email = "jpmarindiaz@gmail.com"),
+    person(given = "Camila",
+           family = "Achury",
+           role = "aut",
+           email = ""),
     person("Datasketch", role = c("cph", "fnd"))
     )
 Description: Plot recommendation with tidy data fringes.
 Depends:
     R (>= 3.0.0),
     dplyr,
-    dsdataprep,
-    dsopts,
-    dstools,
     ggplot2,
-    hdtable
+    showtext,
+    ggtext
 Imports:
     purrr,
     treemapify
+Remotes:
+    datasketch/dsdataprep,
+    datasketch/dsopts,
+    datasketch/dstools,
+    datasketch/hdtable
 License: MIT
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

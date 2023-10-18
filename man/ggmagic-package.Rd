@@ -11,6 +11,11 @@ Plot recommendation with tidy data fringes.
 \author{
 \strong{Maintainer}: Juan Pablo Marin Diaz \email{jpmarindiaz@gmail.com}
 
+Authors:
+\itemize{
+  \item Camila Achury
+}
+
 Other contributors:
 \itemize{
   \item Datasketch [copyright holder, funder]
