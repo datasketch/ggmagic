@@ -1,0 +1,25 @@
+Package: ggmagic
+Title: Wrapper for Multiple Plots using ggplot.
+Version: 0.1
+Authors@R: c( 
+    person(given = "Juan Pablo",
+           family = "Marin Diaz",
+           role = c("aut", "cre"),
+           email = "jpmarindiaz@gmail.com"),
+    person("Datasketch", role = c("cph", "fnd"))
+    )
+Description: Plot recommendation with tidy data fringes.
+Depends:
+    R (>= 3.0.0),
+    dplyr,
+    dsdataprep,
+    dsopts,
+    ggplot2,
+    hdtable
+Imports:
+    purrr,
+    treemapify
+License: MIT
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
