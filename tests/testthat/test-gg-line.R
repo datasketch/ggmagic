@@ -9,4 +9,6 @@ test_that("Lines plot", {
   data <- lubridate::lakers
   data$date <- lubridate::ymd(data$date)
   gg_line_Dat(data)
+  gg_line_DatNum(data)
+  gg_line_CatDatNum(data)
 })

@@ -49,8 +49,8 @@ gg_line_CatDatNum <- function(data, dic = NULL, ...) {
   var_dat <- dic |> filter(hdtype %in% "Dat") %>% .$id
   var_cat <- dic |> filter(hdtype %in% "Cat") %>% .$id
   var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
-  vars <- c(var_cat, var_dat, var_num[1])
-  gg_line(data = data, dic = dic, vars = vars, color_by = var_cat, ...)
+  vars <- c(var_cat[1], var_dat, var_num[1])
+  gg_line(data = data, dic = dic, vars = vars, color_by = var_cat[1], ...)
 }
 
 #' @export
