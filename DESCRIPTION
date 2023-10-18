@@ -14,6 +14,7 @@ Depends:
     dplyr,
     dsdataprep,
     dsopts,
+    dstools,
     ggplot2,
     hdtable
 Imports:

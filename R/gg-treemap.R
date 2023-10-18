@@ -22,3 +22,48 @@ gg_treemap <- function(data, dic = NULL, vars = NULL, ...) {
     gg_clean_theme(dsopts_merge(..., categories = "theme"))
   gg
 }
+
+
+
+
+#' @export
+gg_treemap_Cat <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  vars <- dic |> filter(hdtype %in% "Cat") %>% .$id
+  vars <- vars[1]
+  gg_treemap(data = data, dic = dic, vars = vars, ..., agg = "count")
+}
+
+#' @export
+gg_treemap_CatNum <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  var_cat <- dic |> filter(hdtype %in% "Cat") %>% .$id
+  var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
+  vars <- c(var_cat[1], var_num[1])
+  gg_treemap(data = data, dic = dic, vars = vars, ...)
+}
+
+#' @export
+gg_treemap_CatCatNum <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  var_cat <- dic |> filter(hdtype %in% "Cat") %>% .$id
+  var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
+  vars <- c(var_cat[1], var_cat[2], var_num[1])
+  gg_treemap(data = data, dic = dic, vars = vars, color_by = var_cat[1], ...)
+}
+
+#' @export
+gg_treemap_CatYeaNum <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  var_cat <- dic |> filter(hdtype %in% "Cat") %>% .$id
+  var_yea <- dic |> filter(hdtype %in% "Yea") %>% .$id
+  var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
+  vars <- c(var_cat[1], var_yea[1], var_num[1])
+  gg_treemap(data = data, dic = dic, vars = vars, color_by = var_cat[1], ...)
+}
+
+
