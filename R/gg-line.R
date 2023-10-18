@@ -53,6 +53,26 @@ gg_line_CatDatNum <- function(data, dic = NULL, ...) {
   gg_line(data = data, dic = dic, vars = vars, color_by = var_cat[1], ...)
 }
 
+
+#' @export
+gg_line_Yea <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  vars <- dic |> filter(hdtype %in% "Yea") %>% .$id
+  vars <- vars[1]
+  gg_line(data = data, dic = dic, vars = vars, agg = "count", ...)
+}
+
+#' @export
+gg_line_YeaNum <- function(data, dic = NULL, ...) {
+  vars <- NULL
+  if (is.null(dic)) dic <- create_dic(data)
+  var_dat <- dic |> filter(hdtype %in% "Yea") %>% .$id
+  var_num <- dic |> filter(hdtype %in% "Num") %>% .$id
+  vars <- c(var_dat[1], var_num[1])
+  gg_line(data = data, dic = dic, vars = vars, ...)
+}
+
 #' @export
 gg_line_CatYeaNum <- function(data, dic = NULL, ...) {
   vars <- NULL
